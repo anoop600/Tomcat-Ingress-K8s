@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomcat-eight-deployment
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: tomcatEight
+  template:
+    metadata:
+      name: vote
+      labels:
+        app: tomcatEight
+    spec:
+      containers:
+        - name: tomcateight
+          image: tomcat:8
+          ports:
+            - containerPort: 8080
+              protocol: TCP
